@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="estatePageScanner:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/estatePageScanner_jar</output-path>
+    <root id="archive" name="estatePageScanner.jar">
+      <element id="module-output" name="estatePageScanner" />
+      <element id="extracted-dir" path="$USER_HOME$/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jsoup-1.11.3.jar" path-in-jar="/" />
+      <element id="library" level="project" name="src0_82" />
+    </root>
+  </artifact>
+</component>

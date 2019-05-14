@@ -1,9 +1,76 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" styleClass="styleMain" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <HBox GridPane.rowIndex="1">
+        <Label text="Vyber server:" />
+    </HBox>
+    <HBox GridPane.rowIndex="2">
+        <Label text="Vyber typ transakcie:" />
+    </HBox>
+    <HBox GridPane.rowIndex="3">
+        <Label text="Vyber typ nehnuteľnosti:" />
+    </HBox>
+    <HBox GridPane.rowIndex="4">
+        <Label text="Vyber lokalitu:" />
+    </HBox>
+    <HBox GridPane.rowIndex="5">
+        <Button fx:id="generuj" onAction="#actionGeneruj" text="Generuj vyhľadávací dopyt" />
+    </HBox>
+    <HBox prefHeight="34.0" prefWidth="176.0" GridPane.rowIndex="12">
+      <children>
+          <TextField fx:id="pocetInzeratov" prefHeight="30.0" prefWidth="99.0" />
+      </children></HBox>
+    <HBox GridPane.rowIndex="15" />
+   <FlowPane prefHeight="0.0" prefWidth="267.0" GridPane.rowIndex="7">
+      <children>
+          <TextField fx:id="vysledok" prefHeight="30.0" prefWidth="346.0" />
+      </children>
+   </FlowPane>
+     <ComboBox fx:id="dbtypeCbx" onAction="#actionVyberServer" prefHeight="25.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+     <ComboBox fx:id="dbtypeTransakCbx" onAction="#actionVyberTransakciu" prefHeight="25.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+     <ComboBox fx:id="dbtypeNehnutCbx" onAction="#actionVyberTyp" prefHeight="25.0" prefWidth="102.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+     <ComboBox fx:id="dbtypeMestoCbx" onAction="#actionVyberMesto" prefHeight="25.0" prefWidth="137.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+     <Button fx:id="Vyhladaj" onAction="#actionVyhladaj" text="Spusti vyhľadávanie" GridPane.rowIndex="10" />
+    <Label text="Počet inzerátov:" GridPane.rowIndex="11" />
+    <Label text="Počet nových inzerátov:" GridPane.rowIndex="13" />
+    <TextField fx:id="pocetNovychInzeratov" prefHeight="34.0" prefWidth="90.0" GridPane.rowIndex="14" />
+    <TextField fx:id="stavnahravania" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+   <ProgressBar fx:id="stavUlohy" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+   <ProgressIndicator fx:id="Indicator" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+   <Button fx:id="ZoznamNehnutelnosti" onAction="#actionZoznamNehnutelnosti" text="Zoznam nehnutelnosti" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>
