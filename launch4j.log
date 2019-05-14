@@ -1,0 +1,31 @@
+
+
+Version:	3.12
+CmdLine:	C:\Users\HP\OneDrive - Reality Brokers, s.r.o\Vysoká škola\LETO 2019\Programovanie 3 - opakovanie JavaFX\estatePageScanner\estatePageScanner.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\Users\HP\OneDrive - Reality Brokers, s.r.o\Vysoká škola\LETO 2019\Programovanie 3 - opakovanie JavaFX\estatePageScanner\.
+Java min ver:	1.008.000
+Java max ver:	
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Check launcher:	C:\Program Files\Java\jre1.8.0_201\bin\javaw.exe (OK)
+Match:		1.008.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_201
+Check launcher:	C:\Program Files\Java\jre1.8.0_201\bin\javaw.exe (OK)
+Match:		1.008.000_201
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8
+Ignore:		1.008.000
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8.0_201
+Ignore:		1.008.000_201
+64-bit search:	SOFTWARE\JavaSoft\JRE...
+64-bit search:	SOFTWARE\JavaSoft\JDK...
+Check:		SOFTWARE\JavaSoft\JDK\9.0.1
+Check launcher:	C:\Program Files\Java\jdk-9.0.1\bin\javaw.exe (OK)
+Match:		1.009.000_001
+Runtime used:	1.009.000_001 (64-bit)
+Substitute:	EXEDIR = C:\Users\HP\OneDrive - Reality Brokers, s.r.o\Vysoká škola\LETO 2019\Programovanie 3 - opakovanie JavaFX\estatePageScanner
+Launcher:	C:\Program Files\Java\jdk-9.0.1\bin\javaw.exe
+Launcher args:	-Dlaunch4j.exedir="C:\Users\HP\OneDrive - Reality Brokers, s.r.o\Vysoká škola\LETO 2019\Programovanie 3 - opakovanie JavaFX\estatePageScanner" -jar "C:\Users\HP\OneDrive - Reality Brokers, s.r.o\Vysoká škola\LETO 2019\Programovanie 3 - opakovanie JavaFX\estatePageScanner\estatePageScanner.exe"
+Args length:	294/32768 chars
+Exit code:	0
