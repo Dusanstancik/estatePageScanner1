@@ -7,18 +7,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 
@@ -76,25 +84,7 @@ public class ZoznamNehnutelnosti implements Initializable {
             e.printStackTrace();
         }
 
- /*           while (rs1.next()){
-                nehnlist.add(new ModelNehnutelnosti(rs1.getInt("id"),rs1.getString("nazov"),
-                        rs1.getInt("idnaserveri"),rs1.getString("druh_transakcie"),rs1.getString("nazovTypu"),
-                        rs1.getDouble("cena"),rs1.getString("titulka")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        column1.setCellValueFactory(new PropertyValueFactory<>("id"));
-        column2.setCellValueFactory(new PropertyValueFactory<>("nazov"));
-        column3.setCellValueFactory(new PropertyValueFactory<>("idnaserveri"));
-        column4.setCellValueFactory(new PropertyValueFactory<>("druh_transakcie"));
-        column5.setCellValueFactory(new PropertyValueFactory<>("nazovTypu"));
-        column6.setCellValueFactory(new PropertyValueFactory<>("cena"));
-        column7.setCellValueFactory(new PropertyValueFactory<>("titulka"));
-
-        table.setItems(nehnlist);*/
-
-    }
+     }
 
 
 
@@ -161,11 +151,31 @@ public class ZoznamNehnutelnosti implements Initializable {
     }
 
 
-    public void ActionDelete(ActionEvent actionEvent) throws SQLException {
+    public void ActionDelete(ActionEvent actionEvent) throws SQLException, IOException {
+        String sprava = "";
         Integer selectedItem = table.getSelectionModel().getSelectedItem().getId();
         PreparedStatement query = con.prepareStatement("DELETE FROM nehnutelnosti WHERE id = ?");
         query.setString(1, Integer.toString(selectedItem));
-        query.execute();
+        Boolean result = query.execute();
+        if (result){
+             sprava="Zaznam cislo "+selectedItem.toString()+" bol vymazany";
+        }else{
+             sprava="Zaznam cislo "+selectedItem.toString()+" nebol vymazany";
+        }
+        Locale locale2 = new Locale("English","EN");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("messagewithOK.fxml"), ResourceBundle.getBundle("string",locale2));
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage2 = new Stage();
+        /*posielanie parametrov do okna*/
+        MessagewithOK messagewithOK = (MessagewithOK)fxmlLoader.getController();
+        messagewithOK.getMessage(sprava);
+        stage2.setTitle("Informacia o vykonaní operácie");
+        stage2.setScene(new Scene(root2, 400 , 99));
+        stage2.initModality(Modality.WINDOW_MODAL);
+        stage2.initOwner(
+                ((Node)actionEvent.getSource()).getScene().getWindow() );
+        stage2.show();
+        /*znovu nacitanie databazy*/
         ResultSet rs1 = null;
         try {
             rs1 = this.getAllNehnutelnosti();

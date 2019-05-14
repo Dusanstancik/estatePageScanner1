@@ -35,6 +35,11 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"), ResourceBundle.getBundle("string",locale));
         primaryStage.setTitle("Page Scanner");
         primaryStage.setScene(new Scene(root, 800, 500));
+
+
+
+
+
         primaryStage.show();
 
         /*System.out.println(" 62 263,23 ".trim());
