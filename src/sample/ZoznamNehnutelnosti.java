@@ -71,7 +71,12 @@ public class ZoznamNehnutelnosti implements Initializable {
         ResultSet rs1 = null;
         try {
             rs1 = this.getAllNehnutelnosti();
-            while (rs1.next()){
+            this.naplnZoznam(rs1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+ /*           while (rs1.next()){
                 nehnlist.add(new ModelNehnutelnosti(rs1.getInt("id"),rs1.getString("nazov"),
                         rs1.getInt("idnaserveri"),rs1.getString("druh_transakcie"),rs1.getString("nazovTypu"),
                         rs1.getDouble("cena"),rs1.getString("titulka")));
@@ -87,7 +92,7 @@ public class ZoznamNehnutelnosti implements Initializable {
         column6.setCellValueFactory(new PropertyValueFactory<>("cena"));
         column7.setCellValueFactory(new PropertyValueFactory<>("titulka"));
 
-        table.setItems(nehnlist);
+        table.setItems(nehnlist);*/
 
     }
 
@@ -95,24 +100,38 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     public void ActionSortByServer (ActionEvent actionEvent){
         ResultSet rs1 = null;
-
         String indexServer = Integer.toString(this.cbxServer.getSelectionModel().getSelectedIndex()+1);
-
-        ObservableList<ModelNehnutelnosti> nehnlist = FXCollections.observableArrayList();
         try {
             rs1 = this.getbyServer(indexServer);
-            while (rs1.next()) {
-                nehnlist.add(new ModelNehnutelnosti(rs1.getInt("id"), rs1.getString("nazov"),
-                        rs1.getInt("idnaserveri"), rs1.getString("druh_transakcie"), rs1.getString("nazovTypu"),
-                        rs1.getDouble("cena"), rs1.getString("titulka")));
+            this.naplnZoznam(rs1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    private void naplnZoznam (ResultSet rs2) {
+        ObservableList<ModelNehnutelnosti> nehnlist = FXCollections.observableArrayList();
+        try {
+
+            while (rs2.next()){
+                nehnlist.add(new ModelNehnutelnosti(rs2.getInt("id"),rs2.getString("nazov"),
+                        rs2.getInt("idnaserveri"),rs2.getString("druh_transakcie"),rs2.getString("nazovTypu"),
+                        rs2.getDouble("cena"),rs2.getString("titulka")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        column1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        column2.setCellValueFactory(new PropertyValueFactory<>("nazov"));
+        column3.setCellValueFactory(new PropertyValueFactory<>("idnaserveri"));
+        column4.setCellValueFactory(new PropertyValueFactory<>("druh_transakcie"));
+        column5.setCellValueFactory(new PropertyValueFactory<>("nazovTypu"));
+        column6.setCellValueFactory(new PropertyValueFactory<>("cena"));
+        column7.setCellValueFactory(new PropertyValueFactory<>("titulka"));
+
         table.setItems(nehnlist);
-
     }
-
 
 
     private ResultSet getAllNehnutelnosti() throws SQLException {
@@ -147,7 +166,13 @@ public class ZoznamNehnutelnosti implements Initializable {
         PreparedStatement query = con.prepareStatement("DELETE FROM nehnutelnosti WHERE id = ?");
         query.setString(1, Integer.toString(selectedItem));
         query.execute();
-        table.setItems(nehnlist);
+        ResultSet rs1 = null;
+        try {
+            rs1 = this.getAllNehnutelnosti();
+            this.naplnZoznam(rs1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
