@@ -2,12 +2,17 @@ root {
     display: block;
 }
 
+.root {
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+
 
 .label {
     -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-border-radius: 5px;
 }
 .button {
     -fx-text-fill: white;
