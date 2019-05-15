@@ -1,0 +1,50 @@
+.root {
+    background-color: white;
+}
+
+.label {
+    font-size: 15px;
+    font-weight: bold;
+    text-fill-color: black;
+    border-radius: 5px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    background-size: cover;
+    color: darkslategrey;
+    text-align: center;
+    position: relative;
+    z-index: -2;
+}
+
+body:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    content: ' ';
+    background: #23232387;
+    display: block;
+    height: 100%;
+    width: 100%;
+
+}
+
+.animated {
+    animation-duration: 2s;
+    animation-delay: 500ms;
+    animation-fill-mode: both;
+}
+
+#contentPost {
+    display: none;
+}

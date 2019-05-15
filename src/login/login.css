@@ -1,0 +1,10 @@
+.root {
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+
+.label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: darkgrey;
+    -fx-border-radius: 5;
+}
