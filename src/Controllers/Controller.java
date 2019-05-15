@@ -1,4 +1,4 @@
-package sample;
+package Controllers;
 
 import DB.Database;
 import SCAN.Topreality;
@@ -17,7 +17,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -29,9 +28,7 @@ import java.util.ResourceBundle;
 
 import static SCAN.Topreality.createWorker;
 import static java.lang.Math.round;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.stage.Stage;
 
 
@@ -193,7 +190,7 @@ public class Controller implements Initializable {
     }
     public void actionZoznamNehnutelnosti(ActionEvent actionEvent) throws IOException {
         Locale locale = new Locale("English","EN");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zoznamNehnutelnosti.fxml"), ResourceBundle.getBundle("string",locale));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../windows/zoznamNehnutelnosti.fxml"), ResourceBundle.getBundle("string",locale));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
 

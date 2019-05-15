@@ -1,4 +1,4 @@
-package sample;
+package Models;
 
 public class ModelLokalita {
     Integer id;

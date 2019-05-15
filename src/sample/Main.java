@@ -1,30 +1,15 @@
 package sample;
 
-import DB.Database;
-import SCAN.Parametre;
-import SCAN.Topreality;
 import javafx.application.Application;
-import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.nodes.Node;
-import org.jsoup.select.Elements;
 
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.sun.xml.internal.bind.WhiteSpaceProcessor.replace;
-import static java.lang.Double.parseDouble;
 import static java.lang.Math.round;
 
 public class Main extends Application {
@@ -32,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Locale locale = new Locale("English","EN");
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"), ResourceBundle.getBundle("string",locale));
+        Parent root = FXMLLoader.load(getClass().getResource("../windows/sample.fxml"), ResourceBundle.getBundle("string",locale));
         primaryStage.setTitle("Page Scanner");
         primaryStage.setScene(new Scene(root, 800, 500));
 

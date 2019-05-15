@@ -1,8 +1,8 @@
-package sample;
+package Controllers;
+
+
 
 import DB.Database;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,6 +19,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import Models.ModelNehnutelnosti;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -84,6 +87,7 @@ public class ZoznamNehnutelnosti implements Initializable {
             e.printStackTrace();
         }
 
+
      }
 
 
@@ -105,9 +109,14 @@ public class ZoznamNehnutelnosti implements Initializable {
         try {
 
             while (rs2.next()){
-                nehnlist.add(new ModelNehnutelnosti(rs2.getInt("id"),rs2.getString("nazov"),
-                        rs2.getInt("idnaserveri"),rs2.getString("druh_transakcie"),rs2.getString("nazovTypu"),
-                        rs2.getDouble("cena"),rs2.getString("titulka")));
+                nehnlist.add(new ModelNehnutelnosti(
+                        rs2.getInt("id"),
+                        rs2.getString("nazov"),
+                        rs2.getInt("idnaserveri"),
+                        rs2.getString("druh_transakcie"),
+                        rs2.getString("nazovTypu"),
+                        rs2.getDouble("cena"),
+                        rs2.getString("titulka")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -153,17 +162,20 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     public void ActionDelete(ActionEvent actionEvent) throws SQLException, IOException {
         String sprava = "";
+        /* vyber ID parametra z oznaceneho zaznamu*/
         Integer selectedItem = table.getSelectionModel().getSelectedItem().getId();
+        /* vymazanie zaznamu podla ID*/
         PreparedStatement query = con.prepareStatement("DELETE FROM nehnutelnosti WHERE id = ?");
         query.setString(1, Integer.toString(selectedItem));
         Boolean result = query.execute();
-        if (result){
+        if (!result){
              sprava="Zaznam cislo "+selectedItem.toString()+" bol vymazany";
         }else{
              sprava="Zaznam cislo "+selectedItem.toString()+" nebol vymazany";
         }
+        /* Otvorenie modalneho okna */
         Locale locale2 = new Locale("English","EN");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("messagewithOK.fxml"), ResourceBundle.getBundle("string",locale2));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../windows/messagewithOK.fxml"), ResourceBundle.getBundle("string",locale2));
         Parent root2 = (Parent) fxmlLoader.load();
         Stage stage2 = new Stage();
         /*posielanie parametrov do okna*/
