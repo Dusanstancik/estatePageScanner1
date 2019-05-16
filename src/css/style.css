@@ -1,11 +1,12 @@
 .root {
-    background-color: white;
+
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
 }
 
 .label {
     font-size: 15px;
     font-weight: bold;
-    text-fill-color: black;
+    text-fill-color: darkgrey;
     border-radius: 5px;
 }
 
