@@ -11,7 +11,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class login {
+public class login extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{

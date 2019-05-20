@@ -16,7 +16,43 @@ public class Parametre {
     static Integer idInzeratu;
     static Integer idServer;
     static Integer typ_nehnutelnosti_id;
-    static Boolean balkon,pivnica,vytah = false;
+    static Integer balkon,pivnica,vytah;
+    static Integer lokalita_id;
+
+    public static void setTyp_nehnutelnosti_id(Integer typ_nehnutelnosti_id) {
+        Parametre.typ_nehnutelnosti_id = typ_nehnutelnosti_id;
+    }
+
+    public static Integer getLokalita_id() {
+        return lokalita_id;
+    }
+
+    public static void setLokalita_id(String lokalita_id) {
+        String validretazec = "";
+        validretazec = lokalita_id.trim();
+        Integer dlzkaRetazca1 = validretazec.length();
+        Pattern pattern = Pattern.compile(",");
+        Matcher matcher = pattern.matcher(validretazec);
+        if (matcher.find()) {
+            validretazec = validretazec.substring(0,matcher.start()).trim();
+        }
+        Integer id = 0;
+        switch (validretazec) {
+            case "Martin":
+                id = 1;
+                break;
+            case "Banská Bystrica":
+                id = 2;
+                break;
+            case "Žilina":
+                id = 3;
+                break;
+            case "Liptovský Mikuláš":
+                id = 4;
+                break;
+        }
+        Parametre.lokalita_id = id;
+    }
 
     public static String getLink() {
         return link;
@@ -119,7 +155,9 @@ public class Parametre {
             case "Rekreačný pozemok":
                 id=10;
                 break;
-
+            case "Apartmán":
+                id=11;
+                break;
         }
         Parametre.typ_nehnutelnosti_id = id;
     }
@@ -211,27 +249,27 @@ public class Parametre {
         this.identcislo = identcislo;
     }
 
-    public static Boolean getBalkon() {
+    public static Integer getBalkon() {
         return balkon;
     }
 
-    public void setBalkon(Boolean balkon) {
+    public void setBalkon(Integer balkon) {
         this.balkon = balkon;
     }
 
-    public static Boolean getPivnica() {
+    public static Integer getPivnica() {
         return pivnica;
     }
 
-    public void setPivnica(Boolean pivnica) {
+    public void setPivnica(Integer pivnica) {
         this.pivnica = pivnica;
     }
 
-    public static Boolean getVytah() {
+    public static Integer getVytah() {
         return vytah;
     }
 
-    public void setVytah(Boolean vytah) {
+    public void setVytah(Integer vytah) {
         this.vytah = vytah;
     }
 

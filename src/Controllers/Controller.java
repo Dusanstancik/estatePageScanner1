@@ -27,11 +27,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static SCAN.Topreality.createWorker;
+import static sample.Windows.*;
 import static java.lang.Math.round;
 
 import javafx.stage.Stage;
-
-
 
 
 public class Controller implements Initializable {
@@ -78,43 +77,24 @@ public class Controller implements Initializable {
         try {
 
             Database database = new Database("kc014100db", "kc014100", "jgowihez");
-            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            String[] columns3 = null;
-            Object[] params3 = null;
-            ResultSet rs = null;
-
-            rs = database.select("servre",columns3,params3);
-            while (rs.next()) {
-                // Now add the comboBox addAll statement
-                dbtypeCbx.getItems().addAll(rs.getString("nazov"));
-
-            }
-
-            rs = database.select("typ_nehnutelnosti",columns3,params3);
-            while (rs.next()) {
-                // Now add the comboBox addAll statement
-                dbtypeNehnutCbx.getItems().addAll(rs.getString("nazov"));
-            }
-
-            rs = database.select("lokalita",columns3,params3);
-            while (rs.next()) {
-                // Now add the comboBox addAll statement
-
-                dbtypeMestoCbx.getItems().addAll(rs.getString("nazov"));
-            }
+            String timeStamp = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            ZoznamNehnutelnosti.nastavComboBoxy(database, dbtypeCbx, dbtypeNehnutCbx, dbtypeMestoCbx);
         } catch (SQLException ex) {
             System.out.println("error - "+ex.getMessage());
         }
     }
 
     public void actionGeneruj(ActionEvent actionEvent) {
-        linkVyhladavaci = server+"/"+mesto+"/"+typNehnutelnosti;
+        if (typNehnutelnosti.equals("byty")){
+            linkVyhladavaci = server+"/"+mesto+"/"+typNehnutelnosti;
+        } else {
+            linkVyhladavaci = server+"/"+mesto+"/"+typNehnutelnosti+"/"+transakcia;
+        }
         vysledok.setText(linkVyhladavaci);
     }
 
     public void actionVyberServer(ActionEvent actionEvent) {
         String hodnota = this.dbtypeCbx.getValue();
-
         server = topreality.getServerLink(hodnota);
 
     }
@@ -124,8 +104,11 @@ public class Controller implements Initializable {
 
     public void actionVyberTyp(ActionEvent actionEvent) {
         String hodnota = this.dbtypeNehnutCbx.getValue();
-        typNehnutelnosti = "byty/"+topreality.getBezDiakritikyMale(hodnota);
-
+        if (hodnota.contains("Byty")){
+            typNehnutelnosti = "byty" ;
+        } else {
+            typNehnutelnosti = "byty/" + topreality.getBezDiakritikyMale(hodnota);
+        }
     }
 
     public void actionVyberMesto(ActionEvent actionEvent) {
@@ -149,18 +132,18 @@ public class Controller implements Initializable {
         Integer pocetStranok = 0;
 
 
-        stavUlohy.setProgress(0);
-        copyWorker = createWorker();
-        stavUlohy.progressProperty().unbind();
-        stavUlohy.progressProperty().bind(copyWorker.progressProperty());
+           /* stavUlohy.setProgress(0);
+            copyWorker = createWorker();
+            stavUlohy.progressProperty().unbind();
+            stavUlohy.progressProperty().bind(copyWorker.progressProperty());
 
-        copyWorker.messageProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue<? extends String> observable,
-                                String oldValue, String newValue) {
-                System.out.println(newValue);
-            }
-        });
-        new Thread(copyWorker).start();
+            copyWorker.messageProperty().addListener(new ChangeListener<String>() {
+                public void changed(ObservableValue<? extends String> observable,
+                                    String oldValue, String newValue) {
+                    System.out.println(newValue);
+                }
+            });
+            new Thread(copyWorker).start();*/
 
 
         try {
@@ -189,15 +172,8 @@ public class Controller implements Initializable {
 
     }
     public void actionZoznamNehnutelnosti(ActionEvent actionEvent) throws IOException {
-        Locale locale = new Locale("English","EN");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../windows/zoznamNehnutelnosti.fxml"), ResourceBundle.getBundle("string",locale));
-        Parent root = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-
-        stage.setTitle("Zoznam Nehnutelnosti");
-        stage.setScene(new Scene(root, 1300, 900));
-
-        stage.show();
+        /* spusti okno zoznam nehnutelnosti*/
+        winZoznamNehnutelnosti();
 
     }
 }
