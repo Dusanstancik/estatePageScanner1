@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" styleClass="styleMain" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
+<GridPane alignment="center" hgap="10" styleClass="root" stylesheets="@../css/style.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
     <HBox GridPane.rowIndex="1">
         <Label text="Vyber server:" />
     </HBox>
