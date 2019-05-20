@@ -1,6 +1,7 @@
 package Controllers;
 
 import DB.Database;
+import SCAN.SearchAndSave;
 import SCAN.Topreality;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,6 +26,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static SCAN.Topreality.createWorker;
 import static sample.Windows.*;
@@ -35,8 +38,9 @@ import javafx.stage.Stage;
 
 public class Controller implements Initializable {
     public Button generuj;
-    public ProgressIndicator Indicator;
-    Task copyWorker;
+    @FXML
+    public Label ProcesNahravania;
+    @FXML
     public Button Vyhladaj;
     @FXML
     public TextField pocetInzeratov;
@@ -44,9 +48,13 @@ public class Controller implements Initializable {
     public TextField pocetNovychInzeratov;
     @FXML
     public TextField stavnahravania;
+    @FXML
     public ProgressBar stavUlohy;
     @FXML
+    public Button ZoznamNehnutelnosti;
+    @FXML
     private TextField vysledok;
+    @FXML
     private ResourceBundle bundle;
     @FXML
     private ComboBox<String> dbtypeTransakCbx;
@@ -78,7 +86,7 @@ public class Controller implements Initializable {
 
             Database database = new Database("kc014100db", "kc014100", "jgowihez");
             String timeStamp = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-            ZoznamNehnutelnosti.nastavComboBoxy(database, dbtypeCbx, dbtypeNehnutCbx, dbtypeMestoCbx);
+            Controllers.ZoznamNehnutelnosti.nastavComboBoxy(database, dbtypeCbx, dbtypeNehnutCbx, dbtypeMestoCbx);
         } catch (SQLException ex) {
             System.out.println("error - "+ex.getMessage());
         }
@@ -102,6 +110,7 @@ public class Controller implements Initializable {
         return indexServer = this.dbtypeCbx.getSelectionModel().getSelectedIndex();
     }
 
+    @SuppressWarnings("AccessStaticViaInstance")
     public void actionVyberTyp(ActionEvent actionEvent) {
         String hodnota = this.dbtypeNehnutCbx.getValue();
         if (hodnota.contains("Byty")){
@@ -125,26 +134,27 @@ public class Controller implements Initializable {
     }
 
     public void actionVyhladaj(ActionEvent actionEvent) {
-        String linkVyhladavaciIter;
+
+        SearchAndSave task = new SearchAndSave(linkVyhladavaci);
+        ProcesNahravania.textProperty().bind(task.messageProperty());
+        stavUlohy.progressProperty().unbind();
+        stavUlohy.progressProperty().bind(task.progressProperty());
+
+        task.setOnSucceeded((succeededEvent) -> {
+            stavUlohy.progressProperty().unbind();
+            pocetNovychInzeratov.setText(task.getValue().toString());
+        });
+
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.execute(task);
+        executorService.shutdown();
+
+
+ /*       String linkVyhladavaciIter;
         Topreality doc1 = null;
         Integer nove = 0;
         Integer noveCelkom = 0;
         Integer pocetStranok = 0;
-
-
-           /* stavUlohy.setProgress(0);
-            copyWorker = createWorker();
-            stavUlohy.progressProperty().unbind();
-            stavUlohy.progressProperty().bind(copyWorker.progressProperty());
-
-            copyWorker.messageProperty().addListener(new ChangeListener<String>() {
-                public void changed(ObservableValue<? extends String> observable,
-                                    String oldValue, String newValue) {
-                    System.out.println(newValue);
-                }
-            });
-            new Thread(copyWorker).start();*/
-
 
         try {
             doc1 = new Topreality(linkVyhladavaci);
@@ -168,7 +178,7 @@ public class Controller implements Initializable {
         }
 
         pocetInzeratov.setText(Integer.toString(pocet));
-        pocetNovychInzeratov.setText(Integer.toString(noveCelkom));
+        pocetNovychInzeratov.setText(Integer.toString(noveCelkom));*/
 
     }
     public void actionZoznamNehnutelnosti(ActionEvent actionEvent) throws IOException {

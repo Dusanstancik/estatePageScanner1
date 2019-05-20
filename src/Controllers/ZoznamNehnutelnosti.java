@@ -60,6 +60,7 @@ public class ZoznamNehnutelnosti implements Initializable {
     public TextField tfMaxM2;
     public TextField tfMinM2;
     public TextField tfAVGM2;
+    public TextField tfCountRecords;
     @FXML
     private ComboBox<String> cbxTransakcia;
     @FXML
@@ -268,6 +269,12 @@ public class ZoznamNehnutelnosti implements Initializable {
                     }
                 }
             }
+            /* Zistenie poctu zaznamov v ResultSet*/
+            rs2.beforeFirst();
+            boolean b = rs2.last();
+            Integer countRecords = rs2.getRow();
+            tfCountRecords.setText(Integer.toString(countRecords));
+            //
             average = sucet/pocet;
             averagem2 = sucetm2/pocetm2;
             tfAverageValue.setText(Double.toString(Math.round(average)));
@@ -277,6 +284,8 @@ public class ZoznamNehnutelnosti implements Initializable {
             tfAVGM2.setText(Double.toString(Math.round(averagem2)));
             tfMaxM2.setText(Double.toString(maxm2));
             tfMinM2.setText(Double.toString(minm2));
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
