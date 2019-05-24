@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Dušan Stančík
+ */
+
 package sample;
 
 import javafx.application.Application;

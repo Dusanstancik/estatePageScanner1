@@ -8,6 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
+<!--
+  ~ Copyright (c) 2019. Dušan Stančík
+  -->
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
     <children>
         <ComboBox fx:id="dbtypeTransakCbx" layoutX="200.0" layoutY="61.0" onAction="#actionVyberTransakciu" prefHeight="25.0" prefWidth="98.0" />

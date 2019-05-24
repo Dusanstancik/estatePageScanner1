@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Dušan Stančík
+ */
+
 package SCAN;
 
 import javafx.concurrent.Task;
@@ -14,6 +18,11 @@ public class SearchAndSave extends Task<Integer> {
         this.linkVyhladavaci = linkVyhladavaci;
     }
 
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     @Override
     protected Integer call() throws Exception {
         updateMessage("  ...  Vyhľadávam na stránke ... ");

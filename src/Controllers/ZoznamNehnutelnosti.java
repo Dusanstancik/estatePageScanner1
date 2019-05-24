@@ -1,33 +1,26 @@
+/*
+ * Copyright (c) 2019. Dušan Stančík
+ */
+
 package Controllers;
 
 
-
 import DB.Database;
+import Models.ModelNehnutelnosti;
 import SCAN.Parametre;
-import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
-import com.sun.javafx.application.HostServicesDelegate;
-import javafx.application.HostServices;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import Models.ModelNehnutelnosti;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Callback;
-
 
 import java.awt.*;
 import java.io.IOException;
@@ -37,7 +30,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 import static sample.Windows.winPotvrdzujucaSprava;
@@ -292,7 +284,11 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     }
 
-
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     private ResultSet getAllNehnutelnosti() throws SQLException {
         PreparedStatement query = con.prepareStatement
                 ("SELECT a.id,b.nazov,a.idnaserveri,a.linkserver,a.aktualizacia,a.lokalita,a.lokalita_id,a.druh_transakcie,c.nazov AS nazovTypu,a.cena,a.titulka,a.cenam2,a.uzitplocha " +
@@ -388,6 +384,10 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
     public void ActionDeletetFilter(ActionEvent actionEvent) {
         ResultSet rs1 = null;
         try {
@@ -398,4 +398,5 @@ public class ZoznamNehnutelnosti implements Initializable {
         }
 
     }
+
 }

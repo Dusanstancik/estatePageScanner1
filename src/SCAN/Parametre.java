@@ -1,14 +1,18 @@
+/*
+ * Copyright (c) 2019. Dušan Stančík
+ */
+
 package SCAN;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
+@SuppressWarnings("ALL")
 public class Parametre {
-    static Double cena,cenam2,uzitplocha = 0.00;
-    static String lokalita,ulica,material,stav,aktualizacia,titulka,popis,druh_transakcie,link = "";
+    static Double cena, cenam2, uzitplocha = 0.00;
+    static String lokalita, ulica, material, stav, aktualizacia, titulka, popis, druh_transakcie, link = "";
 
     static Integer identcislo;
     static Integer poschodie;
@@ -16,7 +20,7 @@ public class Parametre {
     static Integer idInzeratu;
     static Integer idServer;
     static Integer typ_nehnutelnosti_id;
-    static Integer balkon,pivnica,vytah;
+    static Integer balkon, pivnica, vytah;
     static Integer lokalita_id;
 
     public static void setTyp_nehnutelnosti_id(Integer typ_nehnutelnosti_id) {
@@ -28,13 +32,13 @@ public class Parametre {
     }
 
     public static void setLokalita_id(String lokalita_id) {
-        String validretazec = "";
+        String validretazec;
         validretazec = lokalita_id.trim();
         Integer dlzkaRetazca1 = validretazec.length();
         Pattern pattern = Pattern.compile(",");
         Matcher matcher = pattern.matcher(validretazec);
         if (matcher.find()) {
-            validretazec = validretazec.substring(0,matcher.start()).trim();
+            validretazec = validretazec.substring(0, matcher.start()).trim();
         }
         Integer id = 0;
         switch (validretazec) {
@@ -124,39 +128,39 @@ public class Parametre {
         Pattern pattern = Pattern.compile("/");
         Matcher matcher = pattern.matcher(typ_nehnutelnosti);
         if (matcher.find()) {
-            validretazec = typ_nehnutelnosti.substring(0,matcher.start()).trim();
+            validretazec = typ_nehnutelnosti.substring(0, matcher.start()).trim();
         }
         Integer id = 0;
-        switch (validretazec){
+        switch (validretazec) {
             case "Garsónka":
-                id=2;
+                id = 2;
                 break;
             case "1 izbový byt":
-                id=3;
+                id = 3;
                 break;
             case "2 izbový byt":
-                id=4;
+                id = 4;
                 break;
             case "3 izbový byt":
-                id=5;
+                id = 5;
                 break;
             case "4 izbový byt":
-                id=6;
+                id = 6;
                 break;
             case "5 izbový byt":
-                id=7;
+                id = 7;
                 break;
             case "Rodinný dom":
-                id=8;
+                id = 8;
                 break;
             case "Pozemok pre rodinné domy":
-                id=9;
+                id = 9;
                 break;
             case "Rekreačný pozemok":
-                id=10;
+                id = 10;
                 break;
             case "Apartmán":
-                id=11;
+                id = 11;
                 break;
         }
         Parametre.typ_nehnutelnosti_id = id;
@@ -173,14 +177,14 @@ public class Parametre {
         Pattern pattern = Pattern.compile("/");
         Matcher matcher = pattern.matcher(poschodie);
 
-        if (matcher.find()){
-            String valPoschodie = poschodie.substring(0,matcher.start()).trim();
-            String valPocetPoschodi = poschodie.substring(matcher.end(),poschodie.length()).trim();
-             nPoschodie = parseInt(valPoschodie);
-             nPocetPoschodi = parseInt(valPocetPoschodi);
+        if (matcher.find()) {
+            String valPoschodie = poschodie.substring(0, matcher.start()).trim();
+            String valPocetPoschodi = poschodie.substring(matcher.end(), poschodie.length()).trim();
+            nPoschodie = parseInt(valPoschodie);
+            nPocetPoschodi = parseInt(valPocetPoschodi);
         }
 
-        Parametre.setPocetPoschodi (nPocetPoschodi);
+        Parametre.setPocetPoschodi(nPocetPoschodi);
         Parametre.poschodie = nPoschodie;
     }
 
@@ -193,7 +197,6 @@ public class Parametre {
     }
 
 
-
     public Parametre() {
     }
 
@@ -202,7 +205,7 @@ public class Parametre {
     }
 
     public void setLokalita(String lokalita) {
-        this.lokalita = lokalita;
+        Parametre.lokalita = lokalita;
     }
 
     public static String getUlica() {
@@ -234,7 +237,6 @@ public class Parametre {
     }
 
     /**
-     *
      * @param aktualizacia
      */
     public void setAktualizacia(String aktualizacia) {
@@ -278,7 +280,6 @@ public class Parametre {
     }
 
     /**
-     *
      * @param cena
      */
     public void setCena(Double cena) {

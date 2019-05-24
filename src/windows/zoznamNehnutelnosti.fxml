@@ -9,6 +9,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
+<!--
+  ~ Copyright (c) 2019. Dušan Stančík
+  -->
+
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ZoznamNehnutelnosti">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fb4ff" height="38.0" layoutX="14.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="807.0" />

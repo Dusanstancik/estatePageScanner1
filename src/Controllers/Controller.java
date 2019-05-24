@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Dušan Stančík
+ */
+
 package Controllers;
 
 import DB.Database;
@@ -101,6 +105,10 @@ public class Controller implements Initializable {
         vysledok.setText(linkVyhladavaci);
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
     public void actionVyberServer(ActionEvent actionEvent) {
         String hodnota = this.dbtypeCbx.getValue();
         server = topreality.getServerLink(hodnota);
@@ -120,6 +128,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
     public void actionVyberMesto(ActionEvent actionEvent) {
         String hodnota = this.dbtypeMestoCbx.getValue();
         mesto = "obec-"+topreality.getBezDiakritikyMale(hodnota);
@@ -149,36 +161,6 @@ public class Controller implements Initializable {
         executorService.execute(task);
         executorService.shutdown();
 
-
- /*       String linkVyhladavaciIter;
-        Topreality doc1 = null;
-        Integer nove = 0;
-        Integer noveCelkom = 0;
-        Integer pocetStranok = 0;
-
-        try {
-            doc1 = new Topreality(linkVyhladavaci);
-            pocet = doc1.getPocetInzeratov();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        pocetStranok = pocet/15;
-
-        for (int i=1;i<round(pocetStranok+2);i++){
-            linkVyhladavaciIter = linkVyhladavaci+"/"+Integer.toString(i)+".html";
-            stavnahravania.setText(Integer.toString(pocetStranok*i));
-
-            try {
-                doc1 = new Topreality(linkVyhladavaciIter);
-                nove = doc1.nahrajNoveInzeraty();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            noveCelkom = noveCelkom + nove;
-        }
-
-        pocetInzeratov.setText(Integer.toString(pocet));
-        pocetNovychInzeratov.setText(Integer.toString(noveCelkom));*/
 
     }
     public void actionZoznamNehnutelnosti(ActionEvent actionEvent) throws IOException {
