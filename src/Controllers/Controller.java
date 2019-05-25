@@ -97,6 +97,36 @@ public class Controller implements Initializable {
     }
 
     public void actionGeneruj(ActionEvent actionEvent) {
+
+        /** testovanie vybratia vsetkych poloziek pri vytvarani dotazu **/
+        Integer allChoice = 1;
+        String menoPolozky = "";
+
+        if (server==null){
+            menoPolozky="Nazov servera";
+            allChoice = 0;
+        }
+        if (mesto==null){
+            menoPolozky=menoPolozky+",Nazov lokality";
+            allChoice = 0;
+        }
+
+        if (typNehnutelnosti==null){
+            menoPolozky=menoPolozky+",Typ nehnutelnosti";
+            allChoice = 0;
+        }
+        if (allChoice==0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Chyba");
+            alert.setHeaderText("Nespravne zadany vyhladavaci dopyt:");
+            alert.setContentText("Nevybrali ste polozku: "+menoPolozky);
+            alert.showAndWait();
+
+            return;
+
+        }
+
+
         if (typNehnutelnosti.equals("byty")){
             linkVyhladavaci = server+"/"+mesto+"/"+typNehnutelnosti;
         } else {
@@ -147,13 +177,26 @@ public class Controller implements Initializable {
 
     public void actionVyhladaj(ActionEvent actionEvent) {
 
+        if (linkVyhladavaci==null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Chyba");
+            alert.setHeaderText("Chyba vyhladavaci dopyt:");
+            alert.setContentText("Nezadali ste vyhladavaci dopyt");
+            alert.showAndWait();
+
+            return;
+        }
+
+
         SearchAndSave task = new SearchAndSave(linkVyhladavaci);
         ProcesNahravania.textProperty().bind(task.messageProperty());
         stavUlohy.progressProperty().unbind();
         stavUlohy.progressProperty().bind(task.progressProperty());
+        pocetNovychInzeratov.setText("");
 
         task.setOnSucceeded((succeededEvent) -> {
             stavUlohy.progressProperty().unbind();
+            stavUlohy.setProgress(100);
             pocetNovychInzeratov.setText(task.getValue().toString());
         });
 
