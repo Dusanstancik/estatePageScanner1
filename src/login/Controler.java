@@ -13,6 +13,10 @@ public class Controler {
     @FXML
     private Text messageLogin;
 
+    public Controler(Text messageLogin) {
+        this.messageLogin = messageLogin;
+    }
+
     @FXML
     public void loginAction(ActionEvent actionEvent) {
         messageLogin.setText("Spracovane cez jazyk Java");

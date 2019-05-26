@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+
+<?import javafx.scene.image.Image?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+  ~ Copyright (c) 2019. Ondrej Lajzo
+  -->
+
+
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splashscreen.FXMLDocumentController">
+
+    <children>
+
+        <ImageView fitHeight="300.0" fitWidth="442.0" layoutX="116.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+
+            <image>
+
+                <Image url="@loading_icon.png" /> <!-- You should change this image file and set new image -->
+
+            </image>
+
+        </ImageView>
+
+    </children>
+
+</AnchorPane>
