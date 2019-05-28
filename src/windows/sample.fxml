@@ -5,34 +5,68 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
     <children>
-        <ComboBox fx:id="dbtypeTransakCbx" layoutX="200.0" layoutY="61.0" onAction="#actionVyberTransakciu" prefHeight="25.0" prefWidth="98.0" />
-        <TextField fx:id="vysledok" layoutX="38.0" layoutY="200.0" prefHeight="30.0" prefWidth="518.0" />
+        <ComboBox fx:id="dbtypeTransakCbx" layoutX="200.0" layoutY="61.0" onAction="#actionVyberTransakciu" prefHeight="25.0" prefWidth="98.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+        <TextField fx:id="vysledok" layoutX="38.0" layoutY="200.0" prefHeight="30.0" prefWidth="518.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
 
 
-        <ComboBox fx:id="dbtypeCbx" layoutX="200.0" layoutY="27.0" onAction="#actionVyberServer" prefHeight="25.0" prefWidth="98.0" />
-        <ComboBox fx:id="dbtypeNehnutCbx" layoutX="198.0" layoutY="121.0" onAction="#actionVyberTyp" prefHeight="25.0" prefWidth="102.0" />
-        <ComboBox fx:id="dbtypeMestoCbx" layoutX="162.0" layoutY="90.0" onAction="#actionVyberMesto" prefHeight="25.0" prefWidth="137.0" />
-        <Button fx:id="Vyhladaj" layoutX="39.0" layoutY="276.0" onAction="#actionVyhladaj" text="Spusti vyhľadávanie" />
-        <Label layoutX="39.0" layoutY="309.0" text="Počet inzerátov:" GridPane.rowIndex="12" />
-        <Label layoutX="41.0" layoutY="336.0" text="Počet nových inzerátov:" GridPane.rowIndex="14" />
-        <TextField fx:id="pocetNovychInzeratov" layoutX="176.0" layoutY="332.0" prefHeight="8.0" prefWidth="98.0" />
-        <TextField fx:id="stavnahravania" layoutX="407.0" layoutY="161.0" />
+        <ComboBox fx:id="dbtypeCbx" layoutX="200.0" layoutY="27.0" onAction="#actionVyberServer" prefHeight="25.0" prefWidth="98.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+        <ComboBox fx:id="dbtypeNehnutCbx" layoutX="198.0" layoutY="121.0" onAction="#actionVyberTyp" prefHeight="25.0" prefWidth="102.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+        <ComboBox fx:id="dbtypeMestoCbx" layoutX="162.0" layoutY="90.0" onAction="#actionVyberMesto" prefHeight="25.0" prefWidth="137.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+        <Button fx:id="Vyhladaj" layoutX="39.0" layoutY="276.0" onAction="#actionVyhladaj" text="Spusti vyhľadávanie">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+        <Label layoutX="39.0" layoutY="309.0" text="Počet inzerátov:" textFill="#2e2e2e" GridPane.rowIndex="12" />
+        <Label layoutX="41.0" layoutY="336.0" text="Počet nových inzerátov:" textFill="#2e2e2e" GridPane.rowIndex="14" />
+        <TextField fx:id="pocetNovychInzeratov" layoutX="176.0" layoutY="332.0" prefHeight="8.0" prefWidth="98.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+        <TextField fx:id="stavnahravania" layoutX="407.0" layoutY="161.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
 
-        <Button fx:id="ZoznamNehnutelnosti" layoutX="414.0" layoutY="50.0" onAction="#actionZoznamNehnutelnosti" text="Zoznam nehnutelnosti" />
-        <ProgressBar fx:id="stavUlohy" layoutX="176.0" layoutY="300.0" prefWidth="200.0" progress="0.0" />
-        <Button fx:id="generuj" layoutX="41.0" layoutY="161.0" onAction="#actionGeneruj" text="Generuj vyhľadávací dopyt" />
-        <Label layoutX="51.0" layoutY="94.0" text="Vyber lokalitu:" />
-        <Label layoutX="51.0" layoutY="125.0" text="Vyber typ nehnuteľnosti:" />
-        <Label layoutX="50.0" layoutY="65.0" text="Vyber typ transakcie:" />
+        <Button fx:id="ZoznamNehnutelnosti" layoutX="414.0" layoutY="50.0" onAction="#actionZoznamNehnutelnosti" text="Zoznam nehnutelnosti">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+        <ProgressBar fx:id="stavUlohy" layoutX="176.0" layoutY="300.0" prefWidth="200.0" progress="0.0">
+         <effect>
+            <DropShadow />
+         </effect></ProgressBar>
+        <Button fx:id="generuj" layoutX="41.0" layoutY="161.0" onAction="#actionGeneruj" text="Generuj vyhľadávací dopyt">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+        <Label layoutX="51.0" layoutY="94.0" text="Vyber lokalitu:" textFill="#2e2e2e" />
+        <Label layoutX="51.0" layoutY="125.0" text="Vyber typ nehnuteľnosti:" textFill="#2e2e2e" />
+        <Label layoutX="50.0" layoutY="65.0" text="Vyber typ transakcie:" textFill="#2e2e2e" />
 
 
-        <Label layoutX="50.0" layoutY="31.0" text="Vyber server:" />
-        <Label fx:id="ProcesNahravania" layoutX="176.0" layoutY="280.0" prefHeight="17.0" prefWidth="200.0" text="" />
+        <Label layoutX="50.0" layoutY="31.0" text="Vyber server:" textFill="#2e2e2e" />
+        <Label fx:id="ProcesNahravania" layoutX="176.0" layoutY="280.0" prefHeight="17.0" prefWidth="200.0" text="" textFill="#2e2e2e" />
 
    </children>
 </AnchorPane>

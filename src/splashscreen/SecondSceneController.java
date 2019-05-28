@@ -23,7 +23,7 @@ public class SecondSceneController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
-        //
+        /*  */
 
     }
 

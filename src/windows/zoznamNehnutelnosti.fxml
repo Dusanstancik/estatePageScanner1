@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
@@ -28,28 +29,76 @@
         </columns>
       </TableView>
 
-      <ComboBox fx:id="cbxServer" layoutX="21.0" layoutY="21.0" onAction="#ActionSortByServer" prefWidth="150.0" />
-      <ComboBox fx:id="dbtypeNehnutCbx" layoutX="183.0" layoutY="21.0" onAction="#ActionSortTypeProperty" prefHeight="25.0" prefWidth="141.0" />
-      <ComboBox fx:id="cbxTransakcia" layoutX="330.0" layoutY="21.0" onAction="#ActionSortTransaction" prefHeight="25.0" prefWidth="111.0" />
-      <Button fx:id="btnDelete" layoutX="1086.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionDelete" text="Vymaž záznam" />
-      <Button fx:id="btnOpenURL" layoutX="1015.0" layoutY="53.0" mnemonicParsing="false" onAction="#ActionUrl" text="Zobraz stránku v prehliadači" />
-      <Button fx:id="btnOpenSoret" layoutX="618.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionRunSort" text="Filtruj Záznamy" />
-      <ComboBox fx:id="cbxLokalita" layoutX="451.0" layoutY="21.0" onAction="#ActionLokalita" prefWidth="150.0" />
-      <Button fx:id="btnEdit" layoutX="977.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionEdit" prefHeight="25.0" prefWidth="103.0" text="Uprav Záznam" />
-      <Button fx:id="btnDeleteFilter" layoutX="737.0" layoutY="22.0" mnemonicParsing="false" onAction="#ActionDeletetFilter" text="Zruš filter" />
-      <Label layoutX="21.0" layoutY="70.0" text="Najvyššia cena" />
-      <TextField fx:id="tfMaxValue" layoutX="116.0" layoutY="66.0" prefHeight="25.0" prefWidth="95.0" />
-      <TextField fx:id="tfMinValue" layoutX="116.0" layoutY="96.0" prefHeight="25.0" prefWidth="95.0" />
-      <Label layoutX="21.0" layoutY="102.0" text="Najnižšia cena" />
-      <Label layoutX="21.0" layoutY="131.0" text="Priemerná cena" />
-      <TextField fx:id="tfAverageValue" layoutX="116.0" layoutY="127.0" prefHeight="25.0" prefWidth="95.0" />
-      <TextField fx:id="tfMaxM2" layoutX="367.0" layoutY="67.0" prefHeight="25.0" prefWidth="97.0" />
-      <TextField fx:id="tfMinM2" layoutX="367.0" layoutY="97.0" prefHeight="25.0" prefWidth="97.0" />
-      <TextField fx:id="tfAVGM2" layoutX="367.0" layoutY="127.0" prefHeight="25.0" prefWidth="97.0" />
-      <Label layoutX="231.0" layoutY="71.0" text="Najvyššia cena na m2" />
-      <Label layoutX="231.0" layoutY="103.0" text="Najnižšia cena na m2" />
-      <Label layoutX="231.0" layoutY="131.0" text="Priemerná cena na m2" />
-      <TextField fx:id="tfCountRecords" layoutX="718.0" layoutY="67.0" prefHeight="25.0" prefWidth="103.0" />
-      <Label layoutX="618.0" layoutY="71.0" text="Počet záznamov" />
+      <ComboBox fx:id="cbxServer" layoutX="21.0" layoutY="21.0" onAction="#ActionSortByServer" prefWidth="150.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+      <ComboBox fx:id="dbtypeNehnutCbx" layoutX="183.0" layoutY="21.0" onAction="#ActionSortTypeProperty" prefHeight="25.0" prefWidth="141.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+      <ComboBox fx:id="cbxTransakcia" layoutX="330.0" layoutY="21.0" onAction="#ActionSortTransaction" prefHeight="25.0" prefWidth="111.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+      <Button fx:id="btnDelete" layoutX="1086.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionDelete" text="Vymaž záznam" textFill="#2e2e2e">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+      <Button fx:id="btnOpenURL" layoutX="1015.0" layoutY="53.0" mnemonicParsing="false" onAction="#ActionUrl" text="Zobraz stránku v prehliadači" textFill="#2e2e2e">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+      <Button fx:id="btnOpenSoret" layoutX="618.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionRunSort" text="Filtruj Záznamy" textFill="#2e2e2e">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+      <ComboBox fx:id="cbxLokalita" layoutX="451.0" layoutY="21.0" onAction="#ActionLokalita" prefWidth="150.0">
+         <effect>
+            <DropShadow />
+         </effect></ComboBox>
+      <Button fx:id="btnEdit" layoutX="977.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionEdit" prefHeight="25.0" prefWidth="103.0" text="Uprav Záznam" textFill="#2e2e2e">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+      <Button fx:id="btnDeleteFilter" layoutX="737.0" layoutY="22.0" mnemonicParsing="false" onAction="#ActionDeletetFilter" text="Zruš filter" textFill="#2e2e2e">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+      <Label layoutX="21.0" layoutY="70.0" text="Najvyššia cena" textFill="#2e2e2e" />
+      <TextField fx:id="tfMaxValue" layoutX="116.0" layoutY="66.0" prefHeight="25.0" prefWidth="95.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="tfMinValue" layoutX="116.0" layoutY="96.0" prefHeight="25.0" prefWidth="95.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <Label layoutX="21.0" layoutY="102.0" text="Najnižšia cena" textFill="#2e2e2e" />
+      <Label layoutX="21.0" layoutY="131.0" text="Priemerná cena" textFill="#2e2e2e" />
+      <TextField fx:id="tfAverageValue" layoutX="116.0" layoutY="127.0" prefHeight="25.0" prefWidth="95.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="tfMaxM2" layoutX="367.0" layoutY="67.0" prefHeight="25.0" prefWidth="97.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="tfMinM2" layoutX="367.0" layoutY="97.0" prefHeight="25.0" prefWidth="97.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <TextField fx:id="tfAVGM2" layoutX="367.0" layoutY="127.0" prefHeight="25.0" prefWidth="97.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <Label layoutX="231.0" layoutY="71.0" text="Najvyššia cena na m2" textFill="#2e2e2e" />
+      <Label layoutX="231.0" layoutY="103.0" text="Najnižšia cena na m2" textFill="#2e2e2e" />
+      <Label layoutX="231.0" layoutY="131.0" text="Priemerná cena na m2" textFill="#2e2e2e" />
+      <TextField fx:id="tfCountRecords" layoutX="718.0" layoutY="67.0" prefHeight="25.0" prefWidth="103.0">
+         <effect>
+            <DropShadow />
+         </effect></TextField>
+      <Label layoutX="618.0" layoutY="71.0" text="Počet záznamov" textFill="#2e2e2e" />
    </children>
 </AnchorPane>

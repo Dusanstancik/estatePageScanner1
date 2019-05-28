@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <!--
   ~ Copyright (c) 2019. Ondrej Lajzo
   -->
 
-
-
-
-
-<AnchorPane id="AnchorPane" prefHeight="279.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="splashscreen.SecondSceneController">
+<AnchorPane id="AnchorPane" prefHeight="279.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splashscreen.SecondSceneController">
 
     <children>
 
-        <Label layoutX="36.0" layoutY="124.0" prefHeight="32.0" prefWidth="529.0" text="Loading Page Scanner">
+        <Label layoutX="36.0" layoutY="124.0" prefHeight="32.0" prefWidth="529.0" text="Loading Page Scanner" textFill="#2e2e2e">
 
             <font>
 
@@ -33,5 +24,8 @@
         </Label>
 
     </children>
+   <effect>
+      <DropShadow />
+   </effect>
 
 </AnchorPane>
