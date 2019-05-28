@@ -13,7 +13,7 @@
 
     <children>
 
-        <ImageView fitHeight="300.0" fitWidth="442.0" layoutX="116.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="400.0" fitWidth="500.0" layoutX="120.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
 
             <image>
 
