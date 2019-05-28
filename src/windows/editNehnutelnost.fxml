@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<!--
+  ~ Copyright (c) 2019. Dušan Stančík
+  -->
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EditNehnutelnost">
+   <children>
+      <TextField fx:id="cena" layoutX="222.0" layoutY="209.0" onAction="#ActionPrepocitaj" />
+      <TextArea fx:id="popis" layoutX="74.0" layoutY="328.0" prefHeight="200.0" prefWidth="631.0" />
+      <TextField fx:id="titulka" layoutX="74.0" layoutY="289.0" prefHeight="25.0" prefWidth="631.0" />
+      <TextField fx:id="priemerCena" layoutX="222.0" layoutY="252.0" />
+      <Label fx:id="nazovServera" layoutX="222.0" layoutY="48.0" text="Label" />
+      <Label fx:id="nazovTypu" layoutX="222.0" layoutY="83.0" text="Label" />
+      <Label fx:id="typTransakcie" layoutX="222.0" layoutY="114.0" text="Label" />
+      <Label fx:id="lokalita" layoutX="222.0" layoutY="146.0" text="Label" />
+      <Label fx:id="ulica" layoutX="222.0" layoutY="176.0" text="Label" />
+      <Button fx:id="cancel" layoutX="554.0" layoutY="541.0" mnemonicParsing="false" onAction="#ActionCancel" text="Zruš" />
+      <Button fx:id="save" layoutX="630.0" layoutY="541.0" mnemonicParsing="false" onAction="#ActionSave" text="Ulož zmeny" />
+      <Label fx:id="uzitplocha" layoutX="526.0" layoutY="256.0" text="Label" />
+      <Label layoutX="73.0" layoutY="48.0" text="Názov servera:" />
+      <Label layoutX="73.0" layoutY="83.0" text="Typ nehnuteľnosti:" />
+      <Label layoutX="73.0" layoutY="114.0" text="Typ transakcie:" />
+      <Label layoutX="73.0" layoutY="146.0" text="Lokalita:" />
+      <Label layoutX="73.0" layoutY="176.0" text="Ulica" />
+      <Label layoutX="72.0" layoutY="213.0" text="Cena nehnuteľnosti:" />
+      <Label layoutX="72.0" layoutY="256.0" text="Cena prepočítaná na m2:" />
+      <Label layoutX="390.0" layoutY="256.0" text="Úžitková plocha v m2" />
+   </children>
+</AnchorPane>

@@ -11,12 +11,12 @@ public class ModelNehnutelnosti {
     Integer id,server_id,idnaserveri,typ_nehnutelnosti_id, balkon, lokalita_id;
     Double cena, cenam2;
     String nazov,druh_transakcie,titulka,aktualizacia,lokalita;
-    String nazovTypu,linkserver;
+    String nazovTypu,linkserver, created_at;
     Hyperlink hplinkserver;
 
 
     public ModelNehnutelnosti(Integer id, String nazov, Integer idnaserveri, String linkserver, String aktualizacia, String lokalita,
-                              String druh_transakcie,String nazovTypu, Double cena, Double cenam2,String titulka, Integer lokalita_id) {
+                              String druh_transakcie,String nazovTypu, Double cena, Double cenam2,String titulka, Integer lokalita_id,String created_at) {
         this.id = id;
         this.server_id = server_id;
         this.idnaserveri = idnaserveri;
@@ -31,6 +31,16 @@ public class ModelNehnutelnosti {
         this.lokalita_id = lokalita_id;
         this.titulka = titulka;
         this.nazovTypu = nazovTypu;
+        this.created_at = created_at;
+    }
+
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     public Integer getBalkon() {

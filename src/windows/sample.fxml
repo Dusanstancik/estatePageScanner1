@@ -33,6 +33,7 @@
 
         <Label layoutX="50.0" layoutY="31.0" text="Vyber server:" />
         <Label fx:id="ProcesNahravania" layoutX="176.0" layoutY="280.0" prefHeight="17.0" prefWidth="200.0" text="" />
+      <Button fx:id="cancel" onAction="#ActionCancel" layoutX="504.0" layoutY="341.0" mnemonicParsing="false" text="Ukonči aplikáciu" />
 
    </children>
 </AnchorPane>

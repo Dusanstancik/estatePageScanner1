@@ -4,6 +4,7 @@
 
 package sample;
 
+import Controllers.EditNehnutelnost;
 import Controllers.MessagewithOK;
 import DB.Database;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +41,21 @@ public class Windows {
        /*               e.printStackTrace();
        /*           }
        /*       });  */
+
+    }
+    public static void winEditNehnutelnost(ActionEvent actionEvent,String IdNehnutelnosti) throws IOException {
+        Locale locale = new Locale("English","EN");
+        FXMLLoader fxmlLoader = new FXMLLoader(Windows.class.getResource("../windows/editNehnutelnost.fxml"), ResourceBundle.getBundle("string",locale));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        /*posielanie IdNehnutelnosti do okna*/
+        EditNehnutelnost editNehnutelnost = (EditNehnutelnost)fxmlLoader.getController();
+        editNehnutelnost.getIdNehnutelnosti(IdNehnutelnosti);
+        stage.setTitle("Úprava Nehnuteľnosti");
+        stage.setScene(new Scene(root, 800, 600));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+
 
     }
     public static void winPotvrdzujucaSprava(ActionEvent actionEvent,String message) throws IOException {

@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class SplashScreen extends Application {
+public class splashscreen extends Application {
 
     @Override
 

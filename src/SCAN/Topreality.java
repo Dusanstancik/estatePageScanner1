@@ -31,12 +31,12 @@ import static java.util.Calendar.*;
 
 public class Topreality {
 
-    public Document doc;
+    private Document doc;
     public Parametre aktualny;
     public Database database;
-    public static String volanyLink;
+    private static String volanyLink;
     public static String upravenyRetazec;
-    public Integer noveInzeraty;
+    private Integer noveInzeraty;
 
     /**
      * Konstruktor
@@ -76,7 +76,7 @@ public class Topreality {
             String clink = link.text().trim();
             if (clink.length() > 3) {
                 if (clink.substring(0, 3).equals("www")) {
-                    aktualny.setLink("https://"+clink);
+                    setLink("https://"+clink);
                     Integer dlzkaRetazca = clink.length();
                     Pattern pattern = Pattern.compile("d");
                     Matcher matcher = pattern.matcher(clink);
@@ -107,22 +107,22 @@ public class Topreality {
         Element td = iter.next();
         Element td1 = iter.next();
         clink3 = td1.text().trim();
-        aktualny.setPopis(clink3);
+        setPopis(clink3);
 
         /* Nacitanie typu nehnutelnosti*/
         String typ_nehnutelnosti = this.getParameter("Kategória", linky);
-        aktualny.setTyp_nehnutelnosti_id(typ_nehnutelnosti);
+        setTyp_nehnutelnosti_id(typ_nehnutelnosti);
 
         /* Nacitanie typu transakcie*/
         String typ_transakcie = this.getParameter("Kategória", linky);
-        aktualny.setDruh_transakcie(typ_transakcie);
+        setDruh_transakcie(typ_transakcie);
 
         /* Nacitanie ceny*/
         cenaString = this.getParameter("Cena", linky);
         transString = "";
         doubleCena = 0.0;
         Integer dlzkaRetazca = cenaString.length();
-        if (aktualny.getDruh_transakcie().contains("Prenájom")){
+        if (getDruh_transakcie().contains("Prenájom")){
             if (cenaString.contains("vrátane provízie")) {
                 cenaString = (cenaString.substring(16));
             } else {
@@ -173,15 +173,15 @@ public class Topreality {
         String cenazameter = "0.00";
         Elements linky4 = doc.select("strong.price");
         Iterator<Element> iter1 = linky4.iterator();
-        if (linky4.size() == 1) { ;
+        if (linky4.size() == 1) {
         } else {
-        Element td2 = iter1.next();
-        Element td3 = iter1.next();
-        String cena = td3.text().trim();
-        Integer dlzka=cena.length();
+            Element td2 = iter1.next();
+            Element td3 = iter1.next();
+            String cena = td3.text().trim();
+            Integer dlzka=cena.length();
 
-        Pattern pattern = Pattern.compile("E");
-        Matcher matcher = pattern.matcher(cena);
+            Pattern pattern = Pattern.compile("E");
+            Matcher matcher = pattern.matcher(cena);
         if (matcher.find()) {
              cena = cena.substring(0,matcher.start()).trim();
         }
@@ -190,17 +190,17 @@ public class Topreality {
 
         /* Nacitanie Poschodia */
         String poschodie = this.getParameter("Poschodie", linky);
-        aktualny.setPoschodie(poschodie);
+        setPoschodie(poschodie);
 
 
         /* Nacitanie typu transakcie*/
         typ_transakcie = this.getParameter("Kategória", linky);
-        aktualny.setDruh_transakcie(typ_transakcie);
+        setDruh_transakcie(typ_transakcie);
 
         /*Nacitanie lokality*/
         String lokalita = this.getParameter("Lokalita",linky);
         aktualny.setLokalita(lokalita);
-        aktualny.setLokalita_id(lokalita);
+        setLokalita_id(lokalita);
 
         /* Nacitanie aktualizacie inzeratu*/
         String aktualizacia = this.getParameter("Aktualizácia",linky);
@@ -229,19 +229,19 @@ public class Topreality {
         /* nacitanie balkon*/
         String balkon = this.getParameter("Balkón / loggia",linky);
         Integer intBalkon = 0;
-        if (balkon.trim().equals("Áno")){ intBalkon = 1; };
+        if (balkon.trim().equals("Áno")){ intBalkon = 1; }
         aktualny.setBalkon(intBalkon);
 
         /* nacitanie vytah*/
         String vytah = this.getParameter("Výťah",linky);
         Integer intvytah = 0;
-        if (vytah.trim().equals("Áno")){ intvytah = 1; };
+        if (vytah.trim().equals("Áno")){ intvytah = 1; }
         aktualny.setVytah(intvytah);
 
         /* nacitanie pivnica*/
         String pivnica = this.getParameter("Pivnica",linky);
         Integer intpivnica = 0;
-        if (pivnica.trim().equals("Áno")){ intpivnica = 1; };
+        if (pivnica.trim().equals("Áno")){ intpivnica = 1; }
         aktualny.setPivnica(intpivnica);
 
         /*aktualny.setCenam2(parseDouble(this.getParameter("&nbsp")));*/

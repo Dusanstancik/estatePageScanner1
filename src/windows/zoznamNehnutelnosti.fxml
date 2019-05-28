@@ -25,6 +25,7 @@
             <TableColumn fx:id="column9" prefWidth="75.0" text="cena" />
             <TableColumn fx:id="column10" prefWidth="75.0" text="cena za m2" />
             <TableColumn fx:id="column11" prefWidth="300.0" text="titulka" />
+            <TableColumn fx:id="column12" prefWidth="300.0" text="Dátum načítania" />
         </columns>
       </TableView>
 
@@ -51,5 +52,6 @@
       <Label layoutX="231.0" layoutY="131.0" text="Priemerná cena na m2" />
       <TextField fx:id="tfCountRecords" layoutX="718.0" layoutY="67.0" prefHeight="25.0" prefWidth="103.0" />
       <Label layoutX="618.0" layoutY="71.0" text="Počet záznamov" />
+      <Button fx:id="cancel" onAction="#ActionCancel" layoutX="1129.0" layoutY="110.0" mnemonicParsing="false" text="Zavri" />
    </children>
 </AnchorPane>
