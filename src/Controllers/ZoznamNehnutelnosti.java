@@ -351,7 +351,7 @@ public class ZoznamNehnutelnosti implements Initializable {
         /* Otvorenie modalneho okna */
         winPotvrdzujucaSprava(actionEvent,sprava);
         /*znovu nacitanie databazy*/
-        ResultSet rs1 = null;
+        ResultSet rs1;
         try {
             rs1 = this.getAllNehnutelnosti();
             this.naplnZoznam(rs1);
@@ -375,7 +375,7 @@ public class ZoznamNehnutelnosti implements Initializable {
 
 
     public void ActionRunSort(ActionEvent actionEvent) {
-        ResultSet rs1 = null;
+        ResultSet rs1;
         try {
             rs1 = this.getbyServerLokalitaTyp(indexServer,podmTypeProperty,podmTransaction,podmLokalita);
             this.naplnZoznam(rs1);
@@ -392,17 +392,20 @@ public class ZoznamNehnutelnosti implements Initializable {
     }
 
     public void ActionEdit(ActionEvent actionEvent) {
+
+        table.getSelectionModel().selectFirst();
         Integer selectedItem = table.getSelectionModel().getSelectedItem().getId();
-        try {
-            winEditNehnutelnost(actionEvent,Integer.toString(selectedItem));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+            try {
+                winEditNehnutelnost(actionEvent, Integer.toString(selectedItem));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
     }
 
     public void ActionDeletetFilter(ActionEvent actionEvent) {
-        ResultSet rs1 = null;
+        ResultSet rs1;
         try {
             rs1 = this.getAllNehnutelnosti();
             this.naplnZoznam(rs1);
