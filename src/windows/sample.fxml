@@ -25,7 +25,7 @@
          <effect>
             <DropShadow />
          </effect></ComboBox>
-        <ComboBox fx:id="dbtypeNehnutCbx" layoutX="300.0" layoutY="177.0" onAction="#actionVyberTyp" prefHeight="50.0" prefWidth="140.0">
+        <ComboBox fx:id="dbtypeNehnutCbx" layoutX="300.0" layoutY="177.0" onAction="#actionVyberTyp" prefHeight="50.0" prefWidth="140.0" stylesheets="@../css/style.css">
          <effect>
             <DropShadow />
          </effect></ComboBox>
