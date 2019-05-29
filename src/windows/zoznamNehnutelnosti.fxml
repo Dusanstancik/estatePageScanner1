@@ -6,18 +6,17 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1340.0" styleClass="" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ZoznamNehnutelnosti">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ZoznamNehnutelnosti">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fb4ff" height="38.0" layoutX="14.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="807.0" />
-      <TableView fx:id="table" layoutX="21.0" layoutY="235.0" prefHeight="540.0" prefWidth="1310.0">
+      <TableView fx:id="table" layoutX="21.0" layoutY="162.0" prefHeight="592.0" prefWidth="1160.0">
         <columns>
           <TableColumn fx:id="column1" prefWidth="75.0" text="id" />
-          <TableColumn fx:id="column2" prefWidth="91.0" text="server_id" />
-            <TableColumn fx:id="column3" prefWidth="84.0" text="id_naserveri" />
+          <TableColumn fx:id="column2" prefWidth="75.0" text="server_id" />
+            <TableColumn fx:id="column3" prefWidth="100.0" text="id_naserveri" />
             <TableColumn fx:id="column4" prefWidth="180.0" text="Link na serveri" />
             <TableColumn fx:id="column5" prefWidth="150.0" text="Pridany na server" />
             <TableColumn fx:id="column6" prefWidth="120.0" text="Lokalita" />
@@ -29,76 +28,28 @@
         </columns>
       </TableView>
 
-      <ComboBox fx:id="cbxServer" layoutX="21.0" layoutY="21.0" onAction="#ActionSortByServer" prefWidth="150.0">
-         <effect>
-            <DropShadow />
-         </effect></ComboBox>
-      <ComboBox fx:id="dbtypeNehnutCbx" layoutX="183.0" layoutY="21.0" onAction="#ActionSortTypeProperty" prefHeight="25.0" prefWidth="141.0">
-         <effect>
-            <DropShadow />
-         </effect></ComboBox>
-      <ComboBox fx:id="cbxTransakcia" layoutX="330.0" layoutY="21.0" onAction="#ActionSortTransaction" prefHeight="25.0" prefWidth="111.0">
-         <effect>
-            <DropShadow />
-         </effect></ComboBox>
-      <Button fx:id="btnDelete" layoutX="1142.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionDelete" text="Vymaž záznam" textFill="#2e2e2e">
-         <effect>
-            <DropShadow />
-         </effect></Button>
-      <Button fx:id="btnOpenURL" layoutX="1001.0" layoutY="127.0" mnemonicParsing="false" onAction="#ActionUrl" text="Zobraz stránku v prehliadači" textFill="#2e2e2e">
-         <effect>
-            <DropShadow />
-         </effect></Button>
-      <Button fx:id="btnOpenSoret" layoutX="618.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionRunSort" text="Filtruj Záznamy" textFill="#2e2e2e">
-         <effect>
-            <DropShadow />
-         </effect></Button>
-      <ComboBox fx:id="cbxLokalita" layoutX="451.0" layoutY="21.0" onAction="#ActionLokalita" prefWidth="150.0">
-         <effect>
-            <DropShadow />
-         </effect></ComboBox>
-      <Button fx:id="btnEdit" layoutX="1001.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionEdit" prefHeight="25.0" prefWidth="103.0" text="Uprav Záznam" textFill="#2e2e2e">
-         <effect>
-            <DropShadow />
-         </effect></Button>
-      <Button fx:id="btnDeleteFilter" layoutX="821.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionDeletetFilter" prefHeight="51.0" prefWidth="130.0" text="Zruš filter" textFill="#2e2e2e">
-         <effect>
-            <DropShadow />
-         </effect></Button>
-      <Label layoutX="20.0" layoutY="83.0" text="Najvyššia cena" textFill="#2e2e2e" />
-      <TextField fx:id="tfMaxValue" layoutX="193.0" layoutY="75.0" prefHeight="51.0" prefWidth="97.0">
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <TextField fx:id="tfMinValue" layoutX="193.0" layoutY="127.0" prefHeight="51.0" prefWidth="97.0">
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <Label layoutX="20.0" layoutY="134.0" text="Najnižšia cena" textFill="#2e2e2e" />
-      <Label layoutX="20.0" layoutY="186.0" text="Priemerná cena" textFill="#2e2e2e" />
-      <TextField fx:id="tfAverageValue" layoutX="193.0" layoutY="180.0" prefHeight="51.0" prefWidth="97.0">
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <TextField fx:id="tfMaxM2" layoutX="530.0" layoutY="75.0" prefHeight="51.0" prefWidth="97.0">
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <TextField fx:id="tfMinM2" layoutX="530.0" layoutY="127.0" prefHeight="51.0" prefWidth="97.0">
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <TextField fx:id="tfAVGM2" layoutX="530.0" layoutY="180.0" prefHeight="51.0" prefWidth="97.0">
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <Label layoutX="294.0" layoutY="82.0" text="Najvyššia cena na m2" textFill="#2e2e2e" />
-      <Label layoutX="294.0" layoutY="134.0" text="Najnižšia cena na m2" textFill="#2e2e2e" />
-      <Label layoutX="294.0" layoutY="186.0" text="Priemerná cena na m2" textFill="#2e2e2e" />
-      <TextField fx:id="tfCountRecords" layoutX="820.0" layoutY="127.0" prefHeight="51.0" prefWidth="130.0">
-         <effect>
-            <DropShadow />
-         </effect></TextField>
-      <Label layoutX="635.0" layoutY="134.0" text="Počet záznamov" textFill="#2e2e2e" />
+      <ComboBox fx:id="cbxServer" layoutX="21.0" layoutY="21.0" onAction="#ActionSortByServer" prefWidth="150.0" />
+      <ComboBox fx:id="dbtypeNehnutCbx" layoutX="183.0" layoutY="21.0" onAction="#ActionSortTypeProperty" prefHeight="25.0" prefWidth="141.0" />
+      <ComboBox fx:id="cbxTransakcia" layoutX="330.0" layoutY="21.0" onAction="#ActionSortTransaction" prefHeight="25.0" prefWidth="111.0" />
+      <Button fx:id="btnDelete" layoutX="1086.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionDelete" text="Vymaž záznam" />
+      <Button fx:id="btnOpenURL" layoutX="1015.0" layoutY="53.0" mnemonicParsing="false" onAction="#ActionUrl" text="Zobraz stránku v prehliadači" />
+      <Button fx:id="btnOpenSoret" layoutX="618.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionRunSort" text="Filtruj Záznamy" />
+      <ComboBox fx:id="cbxLokalita" layoutX="451.0" layoutY="21.0" onAction="#ActionLokalita" prefWidth="150.0" />
+      <Button fx:id="btnEdit" layoutX="977.0" layoutY="21.0" mnemonicParsing="false" onAction="#ActionEdit" prefHeight="25.0" prefWidth="103.0" text="Uprav Záznam" />
+      <Button fx:id="btnDeleteFilter" layoutX="737.0" layoutY="22.0" mnemonicParsing="false" onAction="#ActionDeletetFilter" text="Zruš filter" />
+      <Label layoutX="21.0" layoutY="70.0" text="Najvyššia cena" />
+      <TextField fx:id="tfMaxValue" layoutX="116.0" layoutY="66.0" prefHeight="25.0" prefWidth="95.0" />
+      <TextField fx:id="tfMinValue" layoutX="116.0" layoutY="96.0" prefHeight="25.0" prefWidth="95.0" />
+      <Label layoutX="21.0" layoutY="102.0" text="Najnižšia cena" />
+      <Label layoutX="21.0" layoutY="131.0" text="Priemerná cena" />
+      <TextField fx:id="tfAverageValue" layoutX="116.0" layoutY="127.0" prefHeight="25.0" prefWidth="95.0" />
+      <TextField fx:id="tfMaxM2" layoutX="367.0" layoutY="67.0" prefHeight="25.0" prefWidth="97.0" />
+      <TextField fx:id="tfMinM2" layoutX="367.0" layoutY="97.0" prefHeight="25.0" prefWidth="97.0" />
+      <TextField fx:id="tfAVGM2" layoutX="367.0" layoutY="127.0" prefHeight="25.0" prefWidth="97.0" />
+      <Label layoutX="231.0" layoutY="71.0" text="Najvyššia cena na m2" />
+      <Label layoutX="231.0" layoutY="103.0" text="Najnižšia cena na m2" />
+      <Label layoutX="231.0" layoutY="131.0" text="Priemerná cena na m2" />
+      <TextField fx:id="tfCountRecords" layoutX="718.0" layoutY="67.0" prefHeight="25.0" prefWidth="103.0" />
+      <Label layoutX="618.0" layoutY="71.0" text="Počet záznamov" />
    </children>
 </AnchorPane>

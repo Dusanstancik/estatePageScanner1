@@ -40,6 +40,7 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
+import static sample.Windows.winEditNehnutelnost;
 import static sample.Windows.winPotvrdzujucaSprava;
 
 
@@ -61,6 +62,9 @@ public class ZoznamNehnutelnosti implements Initializable {
     public TextField tfMinM2;
     public TextField tfAVGM2;
     public TextField tfCountRecords;
+    public Button cancel;
+    @FXML
+    public TableColumn column12;
     @FXML
     private ComboBox<String> cbxTransakcia;
     @FXML
@@ -217,7 +221,8 @@ public class ZoznamNehnutelnosti implements Initializable {
                         rs2.getDouble("cena"),
                         rs2.getDouble("cenam2"),
                         rs2.getString("titulka"),
-                        rs2.getInt("lokalita_id")));
+                        rs2.getInt("lokalita_id"),
+                        rs2.getString("created_at")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -234,6 +239,8 @@ public class ZoznamNehnutelnosti implements Initializable {
         column9.setCellValueFactory(new PropertyValueFactory<>("cena"));
         column10.setCellValueFactory(new PropertyValueFactory<>("cenam2"));
         column11.setCellValueFactory(new PropertyValueFactory<>("titulka"));
+        column12.setCellValueFactory(new PropertyValueFactory<>("created_at"));
+
 
         table.setItems(nehnlist);
         Double max = Double.MIN_VALUE;
@@ -295,7 +302,7 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     private ResultSet getAllNehnutelnosti() throws SQLException {
         PreparedStatement query = con.prepareStatement
-                ("SELECT a.id,b.nazov,a.idnaserveri,a.linkserver,a.aktualizacia,a.lokalita,a.lokalita_id,a.druh_transakcie,c.nazov AS nazovTypu,a.cena,a.titulka,a.cenam2,a.uzitplocha " +
+                ("SELECT a.id,b.nazov,a.idnaserveri,a.linkserver,a.aktualizacia,a.lokalita,a.lokalita_id,a.druh_transakcie,c.nazov AS nazovTypu,a.cena,a.titulka,a.cenam2,a.uzitplocha,a.created_at " +
                         "FROM nehnutelnosti a " +
                         "INNER JOIN servre b ON a.server_id = b.id " +
                         "INNER JOIN typ_nehnutelnosti c ON a.typ_nehnutelnosti_id = c.id ");
@@ -304,7 +311,7 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     private ResultSet getbyServer(String Id) throws SQLException {
         PreparedStatement query = con.prepareStatement
-                ("SELECT a.id,b.nazov,a.idnaserveri,a.linkserver,a.aktualizacia,a.lokalita,a.lokalita_id,a.druh_transakcie,c.nazov AS nazovTypu,a.cena,a.titulka,a.cenam2,a.uzitplocha " +
+                ("SELECT a.id,b.nazov,a.idnaserveri,a.linkserver,a.aktualizacia,a.lokalita,a.lokalita_id,a.druh_transakcie,c.nazov AS nazovTypu,a.cena,a.titulka,a.cenam2,a.uzitplocha,a.created_at " +
                         "FROM nehnutelnosti a " +
                         "INNER JOIN servre b ON a.server_id = b.id " +
                         "INNER JOIN typ_nehnutelnosti c ON a.typ_nehnutelnosti_id = c.id " +
@@ -315,7 +322,7 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     private ResultSet getbyServerLokalitaTyp(String IdServer,String IdTypProperty,String IdTransakcia,String IdLokalita) throws SQLException {
         PreparedStatement query = con.prepareStatement
-                ("SELECT a.id,b.nazov,a.idnaserveri,a.linkserver,a.aktualizacia,a.lokalita,a.lokalita_id,a.druh_transakcie,c.nazov AS nazovTypu,a.cena,a.titulka,a.cenam2,a.uzitplocha " +
+                ("SELECT a.id,b.nazov,a.idnaserveri,a.linkserver,a.aktualizacia,a.lokalita,a.lokalita_id,a.druh_transakcie,c.nazov AS nazovTypu,a.cena,a.titulka,a.cenam2,a.uzitplocha,a.created_at " +
                         "FROM nehnutelnosti a " +
                         "INNER JOIN servre b ON a.server_id = b.id " +
                         "INNER JOIN typ_nehnutelnosti c ON a.typ_nehnutelnosti_id = c.id " +
@@ -344,7 +351,7 @@ public class ZoznamNehnutelnosti implements Initializable {
         /* Otvorenie modalneho okna */
         winPotvrdzujucaSprava(actionEvent,sprava);
         /*znovu nacitanie databazy*/
-        ResultSet rs1 = null;
+        ResultSet rs1;
         try {
             rs1 = this.getAllNehnutelnosti();
             this.naplnZoznam(rs1);
@@ -368,7 +375,7 @@ public class ZoznamNehnutelnosti implements Initializable {
 
 
     public void ActionRunSort(ActionEvent actionEvent) {
-        ResultSet rs1 = null;
+        ResultSet rs1;
         try {
             rs1 = this.getbyServerLokalitaTyp(indexServer,podmTypeProperty,podmTransaction,podmLokalita);
             this.naplnZoznam(rs1);
@@ -386,10 +393,19 @@ public class ZoznamNehnutelnosti implements Initializable {
 
     public void ActionEdit(ActionEvent actionEvent) {
 
+        table.getSelectionModel().selectFirst();
+        Integer selectedItem = table.getSelectionModel().getSelectedItem().getId();
+
+            try {
+                winEditNehnutelnost(actionEvent, Integer.toString(selectedItem));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
     }
 
     public void ActionDeletetFilter(ActionEvent actionEvent) {
-        ResultSet rs1 = null;
+        ResultSet rs1;
         try {
             rs1 = this.getAllNehnutelnosti();
             this.naplnZoznam(rs1);
@@ -397,5 +413,11 @@ public class ZoznamNehnutelnosti implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    public void ActionCancel(ActionEvent actionEvent) {
+        // get a handle to the stage
+        Stage stage = (Stage) cancel.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 }

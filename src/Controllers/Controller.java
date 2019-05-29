@@ -56,6 +56,7 @@ public class Controller implements Initializable {
     public ProgressBar stavUlohy;
     @FXML
     public Button ZoznamNehnutelnosti;
+    public Button cancel;
     @FXML
     private TextField vysledok;
     @FXML
@@ -115,11 +116,20 @@ public class Controller implements Initializable {
             menoPolozky=menoPolozky+",Typ nehnutelnosti";
             allChoice = 0;
         }
-        if (allChoice==0) {
+        if (transakcia==null){ transakcia="";}
+
+        if (allChoice != 0) {
+            if (typNehnutelnosti.equals("byty")) {
+                linkVyhladavaci = server + "/" + mesto + "/" + typNehnutelnosti;
+            } else {
+                linkVyhladavaci = server + "/" + mesto + "/" + typNehnutelnosti + "/" + transakcia;
+            }
+            vysledok.setText(linkVyhladavaci);
+        } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Chyba");
             alert.setHeaderText("Nespravne zadany vyhladavaci dopyt:");
-            alert.setContentText("Nevybrali ste polozku: "+menoPolozky);
+            alert.setContentText("Nevybrali ste polozku: " + menoPolozky);
             alert.showAndWait();
 
             return;
@@ -127,12 +137,6 @@ public class Controller implements Initializable {
         }
 
 
-        if (typNehnutelnosti.equals("byty")){
-            linkVyhladavaci = server+"/"+mesto+"/"+typNehnutelnosti;
-        } else {
-            linkVyhladavaci = server+"/"+mesto+"/"+typNehnutelnosti+"/"+transakcia;
-        }
-        vysledok.setText(linkVyhladavaci);
     }
 
     /**
@@ -210,6 +214,12 @@ public class Controller implements Initializable {
         /* spusti okno zoznam nehnutelnosti*/
         winZoznamNehnutelnosti();
 
+    }
+    public void ActionCancel(ActionEvent actionEvent) {
+        // get a handle to the stage
+        Stage stage = (Stage) cancel.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 }
 
