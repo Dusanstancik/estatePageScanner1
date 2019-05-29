@@ -1,30 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <!--
   ~ Copyright (c) 2019. Ondrej Lajzo
   -->
 
-<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splashscreen.FXMLDocumentController">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splashscreen.FXMLDocumentController">
 
     <children>
 
-        <ImageView fitHeight="400.0" fitWidth="500.0" layoutX="120.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-
-            <image>
-
-                <Image url="@loading_icon.png" /> <!-- You should change this image file and set new image -->
-
-            </image>
-         <effect>
-            <DropShadow />
-         </effect>
-
-        </ImageView>
+        <Text fill="#2b2b2b" layoutX="520.0" layoutY="650.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading">
+            <effect>
+                <DropShadow />
+            </effect></Text>
+        <Line endX="50.0" endY="750.0" startX="50.0" startY="50.0" strokeWidth="5.0">
+            <stroke>
+                <LinearGradient endY="0.030612244897959183" startX="1.0" startY="1.0">
+                    <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </stroke>
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop color="#bf8f4b" />
+                        <Stop color="BLACK" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Line>
+        <Line endX="1150.0" endY="750.0" startX="50.0" startY="750.0" strokeWidth="5.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop color="#bf8f4b" />
+                        <Stop color="WHITE" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+            <stroke>
+                <LinearGradient endX="1.0">
+                    <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </stroke>
+        </Line>
+        <Text fill="#2b2b2b" layoutX="300.0" layoutY="400.0" opacity="0.53" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Version 1.0">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Text>
+        <Text fill="#2b2b2b" layoutX="292.0" layoutY="300.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Page scanner">
+            <font>
+                <Font name="Calibri" size="92.0" />
+            </font>
+            <stroke>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop color="#bf8f4b" />
+                        <Stop color="BLACK" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </stroke>
+        </Text>
+        <Text fill="#2b2b2b" layoutX="700.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2019" />
 
     </children>
 

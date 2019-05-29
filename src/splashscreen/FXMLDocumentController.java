@@ -41,7 +41,7 @@ public class FXMLDocumentController implements Initializable {
 
                     try {
 
-                        root = FXMLLoader.load(getClass().getResource("SecondScene.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("../windows/sample.fxml"));
 
                     } catch (IOException ex) {
 
